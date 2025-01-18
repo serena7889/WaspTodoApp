@@ -1,4 +1,3 @@
-import waspLogo from "./waspLogo.png";
 import "./Main.css";
 import { Task } from "wasp/entities";
 import {
@@ -15,7 +14,7 @@ export const MainPage = () => {
     <div>
       <NewTaskForm />
 
-      {tasks && <TasksList tasks={tasks} />}
+      {tasks && <TasksList tasks={tasks}/>}
       {isLoading && "Loading..."}
       {error && "Error: " + error}
     </div>
@@ -32,7 +31,12 @@ const TaskView = ({ task }: { task: Task }) => {
   };
   return (
     <div>
-      <input type="checkbox" id={String(task.id)} checked={task.isDone} onChange={handleIsDoneChange}></input>
+      <input
+        type="checkbox"
+        id={String(task.id)}
+        checked={task.isDone}
+        onChange={handleIsDoneChange}
+      ></input>
       {task.description}
     </div>
   );
