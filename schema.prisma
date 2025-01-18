@@ -9,10 +9,12 @@ generator client {
   provider = "prisma-client-js"
 }
 
-
-
 model Task {
-    id          Int     @id @default(autoincrement())
-    description String
-    isDone      Boolean @default(false)
+  id          Int     @id @default(autoincrement())
+  description String
+  isDone      Boolean @default(false)
+}
+
+model User {
+  id Int @id @default(autoincrement())
 }

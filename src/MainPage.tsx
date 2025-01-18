@@ -1,4 +1,5 @@
 import "./Main.css";
+import { AuthUser } from 'wasp/auth'
 import { Task } from "wasp/entities";
 import {
   getTasks,
@@ -8,18 +9,19 @@ import {
 } from "wasp/client/operations";
 import { ChangeEvent, FormEvent } from "react";
 
-export const MainPage = () => {
-  const { data: tasks, isLoading, error } = useQuery(getTasks);
+export const MainPage = ({user}: {user: AuthUser}) => {
+  const { data: tasks, isLoading, error } = useQuery(getTasks)
+
   return (
     <div>
-      <NewTaskForm />
+      <NewTaskForm/>
 
-      {tasks && <TasksList tasks={tasks}/>}
+      {tasks && <TasksList tasks={tasks} />}
       {isLoading && "Loading..."}
       {error && "Error: " + error}
     </div>
-  );
-};
+  )
+}
 
 const TaskView = ({ task }: { task: Task }) => {
   const handleIsDoneChange = async (event: ChangeEvent<HTMLInputElement>) => {

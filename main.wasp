@@ -2,12 +2,30 @@ app TodoApp {
   wasp: {
     version: "^0.15.2"
   },
-  title: "TodoApp"
+  title: "TodoApp",
+  auth: {
+    userEntity: User,
+    methods: {
+      usernameAndPassword: {}
+    },
+    onAuthFailedRedirectTo: "/log_in"
+  }
 }
 
 route RootRoute { path: "/", to: MainPage }
 page MainPage {
+  authRequired: true,
   component: import { MainPage } from "@src/MainPage"
+}
+
+route SignUpRoute { path: "/sign_up", to: SignUpPage}
+page SignUpPage {
+  component: import { SignUpPage } from "@src/SignUpPage"
+}
+
+route LogInRoute { path: "/log_in", to: LogInPage}
+page LogInPage {
+  component: import { LogInPage } from "@src/LogInPage"
 }
 
 query getTasks {

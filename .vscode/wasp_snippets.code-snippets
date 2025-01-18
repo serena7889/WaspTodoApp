@@ -31,5 +31,16 @@
 			"import { type $1 } from 'wasp/server/operations'",
 		],
 		"description": "Snippet to import a Wasp Entity e.g. GetTasks"
+	},
+	"Add Route and Page": {
+		"scope": "wasp",
+		"prefix": "add page with route",
+		"body": [
+			"route ${1:TitleCase}Route { path: \"/${2:snake_case}\", to: $1Page}",
+			"page $1Page {",
+  			"  component: import { $1Page } from \"@src/$1Page\"",
+			"}"
+		],
+		"description": "Snippet to add a page and route in main.wasp e.g. SignUp and sign_up"
 	}
 }
