@@ -13,8 +13,11 @@ model Task {
   id          Int     @id @default(autoincrement())
   description String
   isDone      Boolean @default(false)
+  user        User    @relation(fields: [userId], references: [id])
+  userId      Int
 }
 
 model User {
-  id Int @id @default(autoincrement())
+  id    Int    @id @default(autoincrement())
+  tasks Task[]
 }

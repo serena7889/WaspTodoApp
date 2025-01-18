@@ -8,6 +8,7 @@ import {
   updateTask,
 } from "wasp/client/operations";
 import { ChangeEvent, FormEvent } from "react";
+import { logout } from "wasp/client/auth";
 
 export const MainPage = ({user}: {user: AuthUser}) => {
   const { data: tasks, isLoading, error } = useQuery(getTasks)
@@ -19,6 +20,8 @@ export const MainPage = ({user}: {user: AuthUser}) => {
       {tasks && <TasksList tasks={tasks} />}
       {isLoading && "Loading..."}
       {error && "Error: " + error}
+      
+      <button onClick={logout}>Log Out</button>
     </div>
   )
 }
